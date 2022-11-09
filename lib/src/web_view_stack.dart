@@ -19,7 +19,7 @@ class _WebViewStackState extends State<WebViewStack> {
     return Stack(
       children: [
         WebView(
-          initialUrl: 'https://flutter.dev',
+          initialUrl: 'https://www.razorfish.fr',
           // Add from here ...
           onWebViewCreated: (webViewController) {
             widget.controller.complete(webViewController);
