@@ -57,8 +57,10 @@ class _WebViewStackState extends State<WebViewStack> {
           },
           // END -> Navigation Delegate
 
-          // ACTIVATE JAVASCRIPT MODE
+          // Activate Javascript
           javascriptMode: JavascriptMode.unrestricted,
+          // Javascrript Channels
+          javascriptChannels: _createJavascriptChannels(context),  // Add this line
         ),
         if (loadingPercentage < 100)
           LinearProgressIndicator(
@@ -68,4 +70,17 @@ class _WebViewStackState extends State<WebViewStack> {
       ],
     );
   }
+  // START <JavascriptChannel>
+  Set<JavascriptChannel> _createJavascriptChannels(BuildContext context) {
+    return {
+      JavascriptChannel(
+        name: 'SnackBar',
+        onMessageReceived: (message) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(message.message)));
+        },
+      ),
+    };
+  }
+  // END <JavascriptChannel>
 }
