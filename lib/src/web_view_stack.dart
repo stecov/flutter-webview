@@ -40,7 +40,7 @@ class _WebViewStackState extends State<WebViewStack> {
               loadingPercentage = 100;
             });
           },
-          // Add from here ...
+          // START -> Navigation Delegate
           navigationDelegate: (navigation) {
             final host = Uri.parse(navigation.url).host;
             if (host.contains('youtube.com')) {
@@ -55,7 +55,10 @@ class _WebViewStackState extends State<WebViewStack> {
             }
             return NavigationDecision.navigate;
           },
-          // ... to here.
+          // END -> Navigation Delegate
+
+          // ACTIVATE JAVASCRIPT MODE
+          javascriptMode: JavascriptMode.unrestricted,
         ),
         if (loadingPercentage < 100)
           LinearProgressIndicator(
